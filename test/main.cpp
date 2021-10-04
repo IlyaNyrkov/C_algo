@@ -1,4 +1,6 @@
-//
-// Created by ilya on 04.10.2021.
-//
-
+#include "gtest/gtest.h"
+int main(int argc, char *argv[]) {
+    ::testing::InitGoogleTest(&argc, argv);
+    int error = RUN_ALL_TESTS();
+    return error;
+}
