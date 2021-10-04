@@ -11,9 +11,15 @@ set(INT_LINKED_LIST
         ../linked_list/int_linked_list_test.cpp
         )
 
+set(INT_DYNAMIC_ARRAY
+        ../dynamic_array/int_dynamic_array.c
+        ../dynamic_array/int_dynamic_array.h
+        ../dynamic_array/int_dynamic_array_test.cpp)
+
 add_executable(TEST_ALGORITHMS
         main.cpp
         ${INT_LINKED_LIST}
+        ${INT_DYNAMIC_ARRAY}
         ${GTEST_LIBRARIES}
         )
 
