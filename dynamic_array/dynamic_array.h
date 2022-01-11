@@ -11,6 +11,7 @@
 #define NULL_DATA_IN_ARRAY_ERR 102
 #define EMPTY_ARRAY_POP 201
 #define MEM_ALLOC_ARRAY_ERR 301
+#define ARR_RESIZE_ERR 401
 
 typedef struct dynamic_array {
     int* data;
