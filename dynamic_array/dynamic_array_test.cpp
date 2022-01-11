@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-#include "int_dynamic_array.h"
+#include "dynamic_array.h"
 }
 
 
