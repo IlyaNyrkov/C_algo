@@ -60,5 +60,6 @@ int resize(dynamic_array* array, int new_size) {
     }
     free(array->data);
     array->data = new_data;
+    array->capacity = new_size;
     return SUCCESS;
 }
