@@ -16,6 +16,13 @@ set(INT_DYNAMIC_ARRAY
         ../dynamic_array/dynamic_array.h
         ../dynamic_array/dynamic_array_test.cpp)
 
+add_executable(TEST_DYNAMIC_ARRAY
+        main.cpp
+        ../dynamic_array/dynamic_array.c
+        ../dynamic_array/dynamic_array.h
+        ../dynamic_array/dynamic_array_test.cpp
+        )
+
 add_executable(TEST_ALGORITHMS
         main.cpp
         ${INT_LINKED_LIST}

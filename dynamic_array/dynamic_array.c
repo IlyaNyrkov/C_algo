@@ -17,7 +17,11 @@ int push_back(dynamic_array* array, int data) {
         return NULL_DATA_IN_ARRAY_ERR;
     }
     if (array->size + 1 > array->capacity) {
-        if (resize(array, array->capacity * 2) == MEM_ALLOC_ARRAY_ERR) {
+        int new_size = array->capacity * 2;
+        if (array->capacity == 0) {
+            array->capacity = 1;
+        }
+        if (resize(array, new_size) == MEM_ALLOC_ARRAY_ERR) {
             return ARR_RESIZE_ERR;
         };
     }
