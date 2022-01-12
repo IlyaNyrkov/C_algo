@@ -11,22 +11,27 @@ set(INT_LINKED_LIST
         ../linked_list/int_linked_list_test.cpp
         )
 
-set(INT_DYNAMIC_ARRAY
+set(DYNAMIC_ARRAY
         ../dynamic_array/dynamic_array.c
         ../dynamic_array/dynamic_array.h
         ../dynamic_array/dynamic_array_test.cpp)
 
 add_executable(TEST_DYNAMIC_ARRAY
         main.cpp
-        ../dynamic_array/dynamic_array.c
-        ../dynamic_array/dynamic_array.h
-        ../dynamic_array/dynamic_array_test.cpp
+        ${DYNAMIC_ARRAY}
+        ${GTEST_LIBRARIES}
+        )
+
+add_executable(TEST_LINKED_LIST
+        main.cpp
+        ${INT_LINKED_LIST}
+        ${GTEST_LIBRARIES}
         )
 
 add_executable(TEST_ALGORITHMS
         main.cpp
         ${INT_LINKED_LIST}
-        ${INT_DYNAMIC_ARRAY}
+        ${DYNAMIC_ARRAY}
         ${GTEST_LIBRARIES}
         )
 
@@ -34,5 +39,6 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(&{GTEST_INCLUDE_DIR})
 message(${GTEST_LIBRARIES})
-
 target_link_libraries(TEST_ALGORITHMS ${GTEST_LIBRARIES})
+target_link_libraries(TEST_DYNAMIC_ARRAY ${GTEST_LIBRARIES})
+target_link_libraries(TEST_LINKED_LIST ${GTEST_LIBRARIES})
