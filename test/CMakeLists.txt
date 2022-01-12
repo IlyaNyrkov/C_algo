@@ -6,15 +6,15 @@ set(CMAKE_C_FLAGS "-pthread  -Wall -Werror -Wpedantic -fprofile-arcs -ftest-cove
 set(CMAKE_CXX_FLAGS "-pthread -Wall -Werror -Wpedantic -fprofile-arcs -ftest-coverage")
 
 set(INT_LINKED_LIST
-        ../linked_list/int_linked_list.c
-        ../linked_list/int_linked_list.h
-        ../linked_list/int_linked_list_test.cpp
+        ../data_structures/linked_list/int_linked_list.c
+        ../data_structures/linked_list/int_linked_list.h
+        ../data_structures/linked_list/int_linked_list_test.cpp
         )
 
 set(DYNAMIC_ARRAY
-        ../dynamic_array/dynamic_array.c
-        ../dynamic_array/dynamic_array.h
-        ../dynamic_array/dynamic_array_test.cpp)
+        ../data_structures/dynamic_array/dynamic_array.c
+        ../data_structures/dynamic_array/dynamic_array.h
+        ../data_structures/dynamic_array/dynamic_array_test.cpp)
 
 add_executable(TEST_DYNAMIC_ARRAY
         main.cpp

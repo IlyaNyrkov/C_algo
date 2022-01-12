@@ -9,7 +9,7 @@ To build all test executables
 ```makefile
 make build_test
 ```
-To rebuild tes
+To rebuild test
 ```makefile
 make rebuild_test
 ```
