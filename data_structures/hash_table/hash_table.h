@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include "stdlib.h"
 
-typedef size_t (*hasher_func)(char*);
+typedef size_t (*hasher_func)(char*, size_t capacity);
 typedef enum hash_table_cell_state {
     EMPTY,
     DELETED,
@@ -26,19 +26,20 @@ typedef struct hash_table {
     hasher_func hasher;
 } hash_table;
 
-bool has(hash_table* table, char* key);
+bool has(hash_table* h_table, char* key);
 
-// if tries to add elem present in table returns false
-bool add(hash_table* table, char* key);
+// if tries to add elem present in h_table returns false
+bool add(hash_table* h_table, char* key);
 
-// if tries to delete non existent elem in table returns false
-bool delete(hash_table* table, char* key);
+// if tries to delete non existent elem in h_table returns false
+bool delete(hash_table* h_table, char* key);
 
 // initial capacity for keys
-hash_table* create_hash_table(size_t keys_count);
+hash_table* create_hash_table(size_t capacity, hasher_func hasher);
 
-bool free_hash_table(hash_table* table);
+void free_hash_table(hash_table* h_table);
 
-int resize(hash_table* table);
+int resize(hash_table* h_table);
 
+size_t gorner_hash(char* value, size_t capacity);
 #endif //TEST_HASH_TABLE_H
