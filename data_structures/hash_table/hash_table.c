@@ -1,14 +1,52 @@
 #include "hash_table.h"
 
 bool has(hash_table* h_table, char* key) {
+    size_t index = 0;
+    for (size_t i = 0; i < h_table->capacity; ++i) {
+        index = (index + i + 1) % h_table->capacity;
+        if (h_table->table[index].cell_state != OCCUPIED) {
+            return (strcmp(h_table->table[index].value, key) == 0);
+        } else {
+            return false;
+        }
+    }
     return false;
 }
 
 bool add(hash_table* h_table, char* key) {
-    return false;
+    if (h_table->capacity * 3 / 4 < h_table->keys_count + 1) {
+        resize(h_table);
+    }
+    size_t index = 0;
+    for (size_t i = 0; i < h_table->capacity; ++i) {
+        index = (index + i + 1) % h_table->capacity;
+        if (h_table->table[index].cell_state != OCCUPIED) {
+            if (strcmp(h_table->table[index].value, key) == 0) {
+                return false;
+            }
+            break;
+        }
+    }
+
+    stpcpy(h_table->table[index].value, key);
+    h_table->table[index].cell_state = OCCUPIED;
+    h_table->keys_count++;
+    return true;
 }
 
 bool delete(hash_table* h_table, char* key) {
+    size_t index = 0;
+    for (size_t i = 0; i < h_table->capacity; ++i) {
+        index = (index + i + 1) % h_table->capacity;
+        if (h_table->table[index].cell_state == OCCUPIED) {
+            if (strcmp(h_table->table[index].value, key) == 0) {
+                h_table->table[index].cell_state = DELETED;
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
     return false;
 }
 

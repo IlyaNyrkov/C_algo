@@ -5,14 +5,15 @@
 #ifndef TEST_HASH_TABLE_H
 #define TEST_HASH_TABLE_H
 #include <stdbool.h>
-#include "stdlib.h"
+#include <stdlib.h>
+#include <string.h>
 
 typedef size_t (*hasher_func)(char*, size_t capacity);
 typedef enum hash_table_cell_state {
     EMPTY,
     DELETED,
     OCCUPIED,
-} cell_state;
+} hash_table_cell_state;
 
 typedef struct hash_table_cell {
     enum hash_table_cell_state cell_state;
