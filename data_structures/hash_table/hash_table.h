@@ -33,7 +33,7 @@ bool has(hash_table* h_table, char* key);
 bool add(hash_table* h_table, char* key);
 
 // if tries to delete non existent elem in h_table returns false
-bool delete(hash_table* h_table, char* key);
+bool delete_key(hash_table* h_table, char* key);
 
 // initial capacity for keys
 hash_table* create_hash_table(size_t capacity, hasher_func hasher);

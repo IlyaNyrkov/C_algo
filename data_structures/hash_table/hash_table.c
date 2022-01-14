@@ -1,14 +1,16 @@
 #include "hash_table.h"
 
 bool has(hash_table* h_table, char* key) {
-    size_t index = 0;
+    size_t index = h_table->hasher(key, h_table->capacity);
     for (size_t i = 0; i < h_table->capacity; ++i) {
-        index = (index + i + 1) % h_table->capacity;
-        if (h_table->table[index].cell_state != OCCUPIED) {
-            return (strcmp(h_table->table[index].value, key) == 0);
+        if (h_table->table[index].cell_state == OCCUPIED) {
+            if (strcmp(h_table->table[index].value, key) == 0) {
+                return true;
+            }
         } else {
             return false;
         }
+        index = (index + i + 1) % h_table->capacity;
     }
     return false;
 }
@@ -17,35 +19,40 @@ bool add(hash_table* h_table, char* key) {
     if (h_table->capacity * 3 / 4 < h_table->keys_count + 1) {
         resize(h_table);
     }
-    size_t index = 0;
+    size_t index = h_table->hasher(key, h_table->capacity);
     for (size_t i = 0; i < h_table->capacity; ++i) {
-        index = (index + i + 1) % h_table->capacity;
         if (h_table->table[index].cell_state != OCCUPIED) {
+            if (h_table->table[index].value == NULL) {
+                break;
+            }
             if (strcmp(h_table->table[index].value, key) == 0) {
                 return false;
             }
             break;
         }
+        index = (index + i + 1) % h_table->capacity;
     }
-
+    h_table->table[index].value = (char*)malloc(strlen(key) * sizeof(char));
     stpcpy(h_table->table[index].value, key);
     h_table->table[index].cell_state = OCCUPIED;
     h_table->keys_count++;
     return true;
 }
 
-bool delete(hash_table* h_table, char* key) {
-    size_t index = 0;
+bool delete_key(hash_table* h_table, char* key) {
+    size_t index = h_table->hasher(key, h_table->capacity);
     for (size_t i = 0; i < h_table->capacity; ++i) {
-        index = (index + i + 1) % h_table->capacity;
         if (h_table->table[index].cell_state == OCCUPIED) {
             if (strcmp(h_table->table[index].value, key) == 0) {
                 h_table->table[index].cell_state = DELETED;
+                free(h_table->table[index].value);
+                h_table->table[index].value = NULL;
                 return true;
             }
         } else {
             return false;
         }
+        index = (index + i + 1) % h_table->capacity;
     }
     return false;
 }
@@ -62,6 +69,10 @@ hash_table* create_hash_table(size_t capacity, hasher_func hasher) {
     h_table->keys_count = 0;
     h_table->hasher = hasher;
     h_table->table = (hash_table_cell*)malloc(h_table->capacity * sizeof(hash_table_cell));
+    for (size_t i =0; i < h_table->capacity; ++i) {
+        h_table->table[i].cell_state = EMPTY;
+        h_table->table[i].value = NULL;
+    }
     return h_table;
 }
 
@@ -97,6 +108,7 @@ size_t gorner_hash(char* value, size_t capacity) {
     size_t i = 0;
     while (value[i] != '\0') {
         index = index * 7 + value[i];
+        i++;
     }
     return index % capacity;
 }
