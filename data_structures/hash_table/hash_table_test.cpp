@@ -35,3 +35,16 @@ TEST(hash_table_add, adding_and_checking) {
     free(numbers_separated);
     free_hash_table(h_table);
 }
+
+TEST(cell_table, create_free) {
+    const size_t size = 10;
+    hash_table_cell* table = create_cell_table(size);
+    free_cell_table(table, size);
+    ASSERT_TRUE(1);
+}
+
+TEST(hash_table, create_delete) {
+    hash_table* table = create_hash_table(10, gorner_hash);
+    free_hash_table(table);
+    ASSERT_TRUE(1);
+}

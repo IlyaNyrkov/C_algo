@@ -13,7 +13,8 @@ test_linked_list_valgrind:
 	valgrind -s ./test/cmake-build-debug/TEST_LINKED_LIST
 
 test_hash_table_valgrind:
-	valgrind -s ./test/cmake-build-debug/TEST_HASH_TABLE
+	# --gtest_filter=<test_suite>.<test_name> run specific test
+	valgrind -s --leak-check=full ./test/cmake-build-debug/TEST_HASH_TABLE
 
 clean:
 	rm -r build

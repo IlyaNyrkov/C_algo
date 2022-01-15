@@ -48,6 +48,7 @@ bool delete_key(hash_table* h_table, char* key) {
                 h_table->table[index].cell_state = EMPTY;
                 free(h_table->table[index].value);
                 h_table->table[index].value = NULL;
+                h_table->keys_count++;
                 return true;
             }
         } else {
@@ -120,7 +121,7 @@ int resize(hash_table* h_table) {
         }
     }
 
-    free(prev_table);
+    free_cell_table(prev_table, prev_table_capacity);
     return 0;
 }
 
