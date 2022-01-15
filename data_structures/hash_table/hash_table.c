@@ -32,8 +32,9 @@ bool add(hash_table* h_table, char* key) {
         }
         index = (index + i + 1) % h_table->capacity;
     }
-    h_table->table[index].value = (char*)malloc(strlen(key) * sizeof(char));
-    stpcpy(h_table->table[index].value, key);
+
+    h_table->table[index].value = (char*)malloc((strlen(key) + 1) * sizeof(char));
+    strcpy(h_table->table[index].value, key);
     h_table->table[index].cell_state = OCCUPIED;
     h_table->keys_count++;
     return true;
@@ -44,7 +45,7 @@ bool delete_key(hash_table* h_table, char* key) {
     for (size_t i = 0; i < h_table->capacity; ++i) {
         if (h_table->table[index].cell_state == OCCUPIED) {
             if (strcmp(h_table->table[index].value, key) == 0) {
-                h_table->table[index].cell_state = DELETED;
+                h_table->table[index].cell_state = EMPTY;
                 free(h_table->table[index].value);
                 h_table->table[index].value = NULL;
                 return true;
@@ -93,13 +94,23 @@ int resize(hash_table* h_table) {
         new_capacity = 4;
     }
     hash_table_cell* new_table = (hash_table_cell*)malloc(new_capacity * sizeof(hash_table_cell));
-    for (size_t i = 0; i < h_table->capacity; ++i) {
-        new_table[i] = h_table->table[i];
+    for (size_t i = 0; i < new_capacity; ++i) {
+        h_table->table[i].cell_state = EMPTY;
+        h_table->table[i].value = NULL;
     }
-    free(h_table->table);
+    hash_table_cell* prev_table = h_table->table;
     h_table->table = new_table;
-    h_table->keys_count = h_table->capacity;
+    size_t prev_table_capacity = h_table->capacity;
     h_table->capacity = new_capacity;
+    h_table->keys_count = 0;
+    size_t i = 0;
+    for (i = 0; i < prev_table_capacity; ++i) {
+        if (prev_table[i].cell_state == OCCUPIED) {
+            add(h_table, prev_table[i].value);
+        }
+    }
+
+    free(prev_table);
     return 0;
 }
 

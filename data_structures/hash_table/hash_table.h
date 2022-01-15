@@ -11,7 +11,6 @@
 typedef size_t (*hasher_func)(char*, size_t capacity);
 typedef enum hash_table_cell_state {
     EMPTY,
-    DELETED,
     OCCUPIED,
 } hash_table_cell_state;
 
