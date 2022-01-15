@@ -1,9 +1,9 @@
 build_test:
 	mkdir build
-	cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make
+	cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make ..
 
 rebuild_test:
-	cd cmake-build-debug && make
+	cd test/cmake-build-debug && make
 
 #data structures
 test_dynamic_array_valgrind:

@@ -37,6 +37,10 @@ bool delete_key(hash_table* h_table, char* key);
 // initial capacity for keys
 hash_table* create_hash_table(size_t capacity, hasher_func hasher);
 
+hash_table_cell* create_cell_table(size_t capacity);
+
+void free_cell_table(hash_table_cell* cell_table, size_t capacity);
+
 void free_hash_table(hash_table* h_table);
 
 int resize(hash_table* h_table);

@@ -69,12 +69,26 @@ hash_table* create_hash_table(size_t capacity, hasher_func hasher) {
     h_table->capacity = capacity;
     h_table->keys_count = 0;
     h_table->hasher = hasher;
-    h_table->table = (hash_table_cell*)malloc(h_table->capacity * sizeof(hash_table_cell));
-    for (size_t i =0; i < h_table->capacity; ++i) {
-        h_table->table[i].cell_state = EMPTY;
-        h_table->table[i].value = NULL;
-    }
+    h_table->table = create_cell_table(h_table->capacity);
     return h_table;
+}
+
+hash_table_cell* create_cell_table(size_t capacity) {
+    hash_table_cell* cell_table = (hash_table_cell*)malloc(capacity * sizeof(hash_table_cell));
+    for (size_t i = 0; i < capacity; ++i) {
+        cell_table[i].cell_state = EMPTY;
+        cell_table[i].value = NULL;
+    }
+    return cell_table;
+}
+
+void free_cell_table(hash_table_cell* cell_table, size_t capacity) {
+    for (size_t i = 0; i < capacity; ++i) {
+        if (cell_table[i].value != NULL) {
+            free(cell_table[i].value);
+        }
+    }
+    free(cell_table);
 }
 
 void free_hash_table(hash_table* h_table) {
@@ -84,7 +98,7 @@ void free_hash_table(hash_table* h_table) {
     if (h_table->table == NULL) {
         return;
     }
-    free(h_table->table);
+    free_cell_table(h_table->table, h_table->capacity);
     free(h_table);
 }
 
@@ -93,11 +107,7 @@ int resize(hash_table* h_table) {
     if (h_table->capacity == 0) {
         new_capacity = 4;
     }
-    hash_table_cell* new_table = (hash_table_cell*)malloc(new_capacity * sizeof(hash_table_cell));
-    for (size_t i = 0; i < new_capacity; ++i) {
-        new_table[i].cell_state = EMPTY;
-        new_table[i].value = NULL;
-    }
+    hash_table_cell* new_table = create_cell_table(new_capacity);
     hash_table_cell* prev_table = h_table->table;
     h_table->table = new_table;
     size_t prev_table_capacity = h_table->capacity;
