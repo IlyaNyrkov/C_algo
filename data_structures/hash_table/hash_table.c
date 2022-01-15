@@ -95,8 +95,8 @@ int resize(hash_table* h_table) {
     }
     hash_table_cell* new_table = (hash_table_cell*)malloc(new_capacity * sizeof(hash_table_cell));
     for (size_t i = 0; i < new_capacity; ++i) {
-        h_table->table[i].cell_state = EMPTY;
-        h_table->table[i].value = NULL;
+        new_table[i].cell_state = EMPTY;
+        new_table[i].value = NULL;
     }
     hash_table_cell* prev_table = h_table->table;
     h_table->table = new_table;
