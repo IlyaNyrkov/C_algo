@@ -12,6 +12,7 @@ typedef size_t (*hasher_func)(char*, size_t capacity);
 typedef enum hash_table_cell_state {
     EMPTY,
     OCCUPIED,
+    DELETED,
 } hash_table_cell_state;
 
 typedef struct hash_table_cell {
@@ -45,5 +46,5 @@ void free_hash_table(hash_table* h_table);
 
 int resize(hash_table* h_table);
 
-size_t gorner_hash(char* value, size_t capacity);
+size_t gorner_hash(const char* value, size_t capacity);
 #endif //TEST_HASH_TABLE_H
