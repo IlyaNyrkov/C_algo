@@ -23,6 +23,11 @@ set(HASH_TABLE
         ../data_structures/hash_table/hash_table.h
         ../data_structures/hash_table/hash_table_test.cpp)
 
+set(BLOOM_FILTER
+        ../data_structures/bloom_filter/bloom_filter.c
+        ../data_structures/bloom_filter/bloom_filter.h
+        ../data_structures/bloom_filter/bloom_filter_test.cpp)
+
 # data structure test executables
 add_executable(TEST_DYNAMIC_ARRAY
         main.cpp
@@ -39,6 +44,12 @@ add_executable(TEST_LINKED_LIST
 add_executable(TEST_HASH_TABLE
         main.cpp
         ${HASH_TABLE}
+        ${GTEST_LIBRARIES}
+        )
+
+add_executable(TEST_BLOOM_FILTER
+        main.cpp
+        ${BLOOM_FILTER}
         ${GTEST_LIBRARIES}
         )
 
