@@ -53,9 +53,6 @@ TEST(hash_table, adding_and_checking) {
     for (size_t i = 0; i < number_cnt; ++i) {
         ASSERT_TRUE(has(h_table, numbers_separated[i]));
     }
-    for (size_t i = 0; i < number_cnt; ++i) {
-        free(numbers_separated[i]);
-    }
     free_strings(numbers_separated, number_cnt);
     free_hash_table(h_table);
 }

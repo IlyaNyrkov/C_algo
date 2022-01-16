@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef size_t (*hasher_func)(char*, size_t capacity);
+typedef size_t (*hasher_func)(const char*, size_t capacity);
 typedef enum hash_table_cell_state {
     EMPTY,
     OCCUPIED,
