@@ -17,4 +17,4 @@ test_hash_table_valgrind:
 	valgrind -s --leak-check=full ./test/cmake-build-debug/TEST_HASH_TABLE
 
 clean:
-	rm -r build
+	rm -r cmake-build-debug

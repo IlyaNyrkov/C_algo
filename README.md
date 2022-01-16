@@ -25,13 +25,9 @@ Clean build folder
 ```makefile
 make clean
 ```
-### Run tests with valgrind
+### Run tests with valgrind 
 
-run tests for dynamic array data structure
+run tests for data structure
 ```makefile
-make test_dynamic_array_valgrind
-```
-run tests for linked list data structure
-```makefile
-make test_linked_list_valgrind
+make test_<data_struct_name>_valgrind
 ```
