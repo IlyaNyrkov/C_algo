@@ -1,4 +1,4 @@
 #include "gtest/gtest.h"
 extern "C" {
-    #include "bloom_filter.h"
+    #include "bit_array.h"
 }
