@@ -79,6 +79,7 @@ TEST(hash_table, adding_deleting_checking) {
         ASSERT_TRUE(add(h_table, numbers_separated[i]));
     }
     for (size_t i = 0; i < number_cnt; ++i) {
+        ASSERT_TRUE(has(h_table, numbers_separated[i]));
         ASSERT_TRUE(delete_key(h_table, numbers_separated[i]));
         ASSERT_FALSE(has(h_table, numbers_separated[i]));
     }
