@@ -8,7 +8,9 @@
 ## data structures
 **<a href="https://github.com/IlyaNyrkov/C_algo/tree/master/data_structures/dynamic_array">Dynamic array</a>** </br>
 **<a href="https://github.com/IlyaNyrkov/C_algo/tree/master/data_structures/linked_list">Linked list</a>** </br>
-**<a href="https://github.com/IlyaNyrkov/C_algo/tree/master/data_structures/hash_table">Hash table</a>** </br> 
+**<a href="https://github.com/IlyaNyrkov/C_algo/tree/master/data_structures/hash_table">Hash table</a>** </br>
+**<a href="https://github.com/IlyaNyrkov/C_algo/tree/master/data_structures/bit_array">Bit array</a>** </br>
+**<a href="https://github.com/IlyaNyrkov/C_algo/tree/master/data_structures/bloom_filter">Bloom filter</a>** </br>
 
 
 # How to build and and run
