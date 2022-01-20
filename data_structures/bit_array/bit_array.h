@@ -5,8 +5,9 @@
 #include <stdbool.h>
 
 typedef struct bit_array {
-    int* array;
+    int32_t* array;
     size_t array_size; //array count in integers
+    size_t bits_count;
 } bit_array;
 
 bit_array* create_bit_array(size_t bits_count);
