@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "bit_array.h"
-typedef size_t (*hasher_func)(const char*);
+typedef size_t (*hasher_func)(const char*, size_t);
 
 typedef struct bloom_filter {
     bit_array b_array;
