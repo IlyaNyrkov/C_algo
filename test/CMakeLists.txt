@@ -6,6 +6,7 @@ set(CMAKE_C_FLAGS "-pthread  -Wall -Werror -Wpedantic -fprofile-arcs -ftest-cove
 set(CMAKE_CXX_FLAGS "-pthread -Wall -Werror -Wpedantic -fprofile-arcs -ftest-coverage")
 
 # data structure sources
+include_directories(../data_structures/bit_array)
 
 set(LINKED_LIST
         ../data_structures/linked_list/int_linked_list.c

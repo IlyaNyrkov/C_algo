@@ -2,11 +2,11 @@
 #include "bloom_filter.h"
 #include <stdlib.h>
 #include <stdbool.h>
-
+#include "bit_array.h"
 typedef size_t (*hasher_func)(const char*);
 
 typedef struct bloom_filter {
-    int* bit_array;
+    bit_array b_array;
     hasher_func hasher;
 } bloom_filter;
 
