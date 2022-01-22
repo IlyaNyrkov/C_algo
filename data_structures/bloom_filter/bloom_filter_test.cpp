@@ -8,6 +8,7 @@ size_t gorner_hash(const char* key, size_t capacity) {
     size_t ind = 0;
     while (key[ind] != '\0') {
         hash_value += hash_value * 7 + key[ind];
+        ind++;
     }
     return hash_value % capacity;
 }

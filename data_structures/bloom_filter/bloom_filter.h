@@ -11,7 +11,7 @@
 typedef size_t (*hasher_func)(const char*, size_t);
 
 typedef struct bloom_filter {
-    bit_array b_array;
+    bit_array* b_array;
     hasher_func hasher;
 } bloom_filter;
 

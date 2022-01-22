@@ -24,15 +24,17 @@ set(HASH_TABLE
         ../data_structures/hash_table/hash_table.h
         ../data_structures/hash_table/hash_table_test.cpp)
 
-set(BLOOM_FILTER
-        ../data_structures/bloom_filter/bloom_filter.c
-        ../data_structures/bloom_filter/bloom_filter.h
-        ../data_structures/bloom_filter/bloom_filter_test.cpp)
-
 set(BIT_ARRAY
         ../data_structures/bit_array/bit_array.c
         ../data_structures/bit_array/bit_array.h
         ../data_structures/bit_array/bit_array_test.cpp)
+
+set(BLOOM_FILTER
+        ../data_structures/bloom_filter/bloom_filter.c
+        ../data_structures/bloom_filter/bloom_filter.h
+        ../data_structures/bit_array/bit_array.c
+        ../data_structures/bit_array/bit_array.h
+        ../data_structures/bloom_filter/bloom_filter_test.cpp)
 
 # data structure test executables
 add_executable(TEST_DYNAMIC_ARRAY
@@ -81,3 +83,4 @@ target_link_libraries(TEST_DYNAMIC_ARRAY ${GTEST_LIBRARIES})
 target_link_libraries(TEST_LINKED_LIST ${GTEST_LIBRARIES})
 target_link_libraries(TEST_HASH_TABLE ${GTEST_LIBRARIES})
 target_link_libraries(TEST_BIT_ARRAY ${GTEST_LIBRARIES})
+target_link_libraries(TEST_BLOOM_FILTER ${GTEST_LIBRARIES})
