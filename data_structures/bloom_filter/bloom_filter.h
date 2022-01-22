@@ -15,7 +15,7 @@ typedef struct bloom_filter {
     hasher_func hasher;
 } bloom_filter;
 
-bloom_filter* create_bloom_filter(size_t number_of_expected_elements);
+bloom_filter* create_bloom_filter(size_t number_of_expected_elements, hasher_func h_func);
 
 void free_bloom_filter(bloom_filter* filter);
 
