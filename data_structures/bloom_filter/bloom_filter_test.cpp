@@ -13,7 +13,18 @@ size_t gorner_hash(const char* key, size_t capacity) {
 }
 
 TEST(bloom_filter, alocating) {
-    bloom_filter* b_filer = create_bloom_filter(10, gorner_hash);
+    bloom_filter* filter = create_bloom_filter(10, gorner_hash);
     ASSERT_TRUE(1);
-    free(b_filer);
+    free_bloom_filter(filter);
+}
+
+TEST(bloom_filter, adding_and_checking) {
+    bloom_filter* filter = create_bloom_filter(10, gorner_hash);
+    char test_str[5] = "test";
+    ASSERT_TRUE(has_not(filter, test_str));
+    char test_str2[5] = "abcd";
+    add(filter, test_str2);
+    ASSERT_TRUE(has_not(filter, test_str));
+    ASSERT_FALSE(has_not(filter, test_str2));
+    free_bloom_filter(filter);
 }
