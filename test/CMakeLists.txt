@@ -27,7 +27,7 @@ set(HASH_TABLE
 set(BIT_ARRAY
         ../data_structures/bit_array/bit_array.c
         ../data_structures/bit_array/bit_array.h
-        ../data_structures/bit_array/bit_array_test.cpp)
+        ../data_structures/bit_array/bit_array_test.cpp ../data_structures/binary_heap/binary_heap.h ../data_structures/binary_heap/binary_heap.c ../data_structures/binary_heap/binary_heap.cpp)
 
 set(BLOOM_FILTER
         ../data_structures/bloom_filter/bloom_filter.c
@@ -78,6 +78,7 @@ enable_testing()
 find_package(GTest REQUIRED)
 include_directories(&{GTEST_INCLUDE_DIR})
 message(${GTEST_LIBRARIES})
+
 target_link_libraries(TEST_ALGORITHMS ${GTEST_LIBRARIES})
 target_link_libraries(TEST_DYNAMIC_ARRAY ${GTEST_LIBRARIES})
 target_link_libraries(TEST_LINKED_LIST ${GTEST_LIBRARIES})
