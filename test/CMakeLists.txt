@@ -7,6 +7,8 @@ set(CMAKE_CXX_FLAGS "-pthread -Wall -Werror -Wpedantic -fprofile-arcs -ftest-cov
 
 # data structure sources
 include_directories(../data_structures/bit_array)
+include_directories(../data_structures/dynamic_array)
+
 
 set(LINKED_LIST
         ../data_structures/linked_list/int_linked_list.c
@@ -27,7 +29,7 @@ set(HASH_TABLE
 set(BIT_ARRAY
         ../data_structures/bit_array/bit_array.c
         ../data_structures/bit_array/bit_array.h
-        ../data_structures/bit_array/bit_array_test.cpp ../data_structures/binary_heap/binary_heap.h ../data_structures/binary_heap/binary_heap.c ../data_structures/binary_heap/binary_heap.cpp ../algorithms/custom_math/custom_math.c ../algorithms/custom_math/custom_math.h ../algorithms/custom_math/custom_math_test.cpp)
+        ../data_structures/bit_array/bit_array_test.cpp ../data_structures/binary_heap/binary_heap.h ../data_structures/binary_heap/binary_heap.c ../data_structures/binary_heap/binary_heap_test.cpp ../algorithms/custom_math/custom_math.c ../algorithms/custom_math/custom_math.h ../algorithms/custom_math/custom_math_test.cpp)
 
 set(BLOOM_FILTER
         ../data_structures/bloom_filter/bloom_filter.c
