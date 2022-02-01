@@ -1,7 +1,7 @@
 # Dynamic array
 
 ## Complexity
-| Operation | base complexity | worst case | best case |
-|-----------|-----------------| -----------|-----------|
-| push_back | O(1) amortized  | O(n)       | O(1)      |
-| pop_back  | O(1)            | O(1)       | O(1)      |
+| Operation | average        | worst case | best case |
+|-----------|----------------| -----------|-----------|
+| push_back | O(1) amortized | O(n)       | O(1)      |
+| pop_back  | O(1)           | O(1)       | O(1)      |
