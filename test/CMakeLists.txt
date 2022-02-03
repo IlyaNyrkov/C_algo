@@ -11,9 +11,9 @@ include_directories(../data_structures/dynamic_array)
 
 
 set(LINKED_LIST
-        ../data_structures/linked_list/int_linked_list.c
-        ../data_structures/linked_list/int_linked_list.h
-        ../data_structures/linked_list/int_linked_list_test.cpp
+        ../data_structures/linked_list/linked_list.c
+        ../data_structures/linked_list/linked_list.h
+        ../data_structures/linked_list/linked_list_test.cpp
         )
 
 set(DYNAMIC_ARRAY
