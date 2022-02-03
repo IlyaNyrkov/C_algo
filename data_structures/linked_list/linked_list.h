@@ -1,7 +1,3 @@
-//
-// Created by ilya on 04.10.2021.
-//
-
 #ifndef C_ALGO_INT_LINKED_LIST_H
 #define C_ALGO_INT_LINKED_LIST_H
 #include <stdlib.h>
