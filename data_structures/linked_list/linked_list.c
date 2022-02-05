@@ -16,6 +16,10 @@ linked_list* push_back_lin_lst(int data, linked_list* begin_pos) {
     return iter->next;
 }
 
+linked_list* pop_back_lin_list(linked_list* begin_pos) {
+    return NULL;
+}
+
 linked_list* push_front_lin_lst(int data, linked_list* begin_pos) {
     linked_list* new_front = create_int_linked_list(data);
     new_front->next = begin_pos;
